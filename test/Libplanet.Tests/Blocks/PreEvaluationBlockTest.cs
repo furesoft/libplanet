@@ -79,6 +79,7 @@ namespace Libplanet.Tests.Blocks
                         previousHash: genesis.Hash,
                         txHash: BlockContent.DeriveTxHash(txs),
                         lastCommit: null,
+                        proof: null,
                         evidenceHash: null),
                     transactions: txs,
                     evidence: evs);
@@ -150,6 +151,7 @@ namespace Libplanet.Tests.Blocks
                         previousHash: genesis.Hash,
                         txHash: BlockContent.DeriveTxHash(txs),
                         lastCommit: null,
+                        proof: null,
                         evidenceHash: null),
                     transactions: txs,
                     evidence: evs);
