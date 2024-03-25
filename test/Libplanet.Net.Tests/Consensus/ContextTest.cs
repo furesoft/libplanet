@@ -158,7 +158,9 @@ namespace Libplanet.Net.Tests.Consensus
 
             // Add block #1 so we can start with a last commit for height 2.
             var blockChain = TestUtils.CreateDummyBlockChain();
-            Block heightOneBlock = blockChain.ProposeBlock(TestUtils.PrivateKeys[1]);
+            Block heightOneBlock = blockChain.ProposeBlock(
+                TestUtils.PrivateKeys[1],
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, TestUtils.PrivateKeys[1]));
             var lastCommit = TestUtils.CreateBlockCommit(heightOneBlock);
             blockChain.Append(heightOneBlock, lastCommit);
 
@@ -265,7 +267,9 @@ namespace Libplanet.Net.Tests.Consensus
                 exceptionThrown = e;
                 exceptionOccurred.Set();
             };
-            var block = blockChain.ProposeBlock(TestUtils.PrivateKeys[1]);
+            var block = blockChain.ProposeBlock(
+                TestUtils.PrivateKeys[1],
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, TestUtils.PrivateKeys[1]));
 
             context.Start();
             context.ProduceMessage(
@@ -286,7 +290,9 @@ namespace Libplanet.Net.Tests.Consensus
                 exceptionThrown = e;
                 exceptionOccurred.Set();
             };
-            var block = blockChain.ProposeBlock(TestUtils.PrivateKeys[2]);
+            var block = blockChain.ProposeBlock(
+                TestUtils.PrivateKeys[2],
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, TestUtils.PrivateKeys[2]));
 
             context.Start();
             context.ProduceMessage(
@@ -374,7 +380,9 @@ namespace Libplanet.Net.Tests.Consensus
                 genesisHash: blockChain.Genesis.Hash,
                 actions: new[] { action }.ToPlainValues());
             blockChain.StageTransaction(tx);
-            var block = blockChain.ProposeBlock(TestUtils.PrivateKeys[1]);
+            var block = blockChain.ProposeBlock(
+                TestUtils.PrivateKeys[1],
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, TestUtils.PrivateKeys[1]));
 
             context.Start();
             context.ProduceMessage(
@@ -504,10 +512,12 @@ namespace Libplanet.Net.Tests.Consensus
                 validatorSet: validatorSet);
             var blockA = blockChain.ProposeBlock(
                 proposer,
-                lastCommit: blockChain.GetBlockCommit(blockChain.Tip.Hash));
+                lastCommit: blockChain.GetBlockCommit(blockChain.Tip.Hash),
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, proposer));
             var blockB = blockChain.ProposeBlock(
                 proposer,
-                lastCommit: blockChain.GetBlockCommit(blockChain.Tip.Hash));
+                lastCommit: blockChain.GetBlockCommit(blockChain.Tip.Hash),
+                proof: TestUtils.CreateZeroRoundProof(blockChain.Tip, proposer));
             context.StateChanged += (sender, state) =>
             {
                 if (state.Step != prevStep)
