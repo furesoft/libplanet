@@ -66,7 +66,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             var block = blockChain.ProposeBlock(TestUtils.PrivateKeys[1], proof: lot.Proof);
@@ -132,7 +132,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             var block = blockChain.ProposeBlock(TestUtils.PrivateKeys[1], proof: lot.Proof);
@@ -233,7 +233,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             context.ProduceMessage(
@@ -329,7 +329,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             context.ProduceMessage(
@@ -411,7 +411,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             context.ProduceMessage(
@@ -508,7 +508,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             context.ProduceMessage(
@@ -655,7 +655,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             lotSet.SetRound(1, lot.Proof);
@@ -665,7 +665,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 1, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             // Push round 0 and round 1 proposes.
@@ -750,7 +750,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             var block = blockChain.ProposeBlock(
@@ -815,7 +815,7 @@ namespace Libplanet.Net.Tests.Consensus
                 context.ProduceMessage(
                     new ConsensusDominantLotMsg(
                         TestUtils.CreateDominantLot(
-                            TestUtils.PrivateKeys[i], blockChain.Tip.Index + 1, 0, lot)));
+                            TestUtils.PrivateKeys[i], lot)));
             }
 
             var block = blockChain.ProposeBlock(
