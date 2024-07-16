@@ -540,8 +540,7 @@ namespace Libplanet.Tests.Blockchain
             var block = blockChain.ProposeBlock(
                 privateKey1,
                 CreateBlockCommit(_blockChain.Tip),
-                new LotMetadata(_blockChain.Tip.Index, 0, _blockChain.Tip.Proof)
-                    .Prove(privateKey1).Proof,
+                CreateZeroRoundProof(_blockChain.Tip, privateKey1),
                 _blockChain.GetPendingEvidence());
             blockChain.Append(block, CreateBlockCommit(block));
 
@@ -638,8 +637,7 @@ namespace Libplanet.Tests.Blockchain
             Block block = _blockChain.ProposeBlock(
                 proposer,
                 blockCommit,
-                new LotMetadata(_blockChain.Tip.Index, 0, _blockChain.Tip.Proof)
-                    .Prove(proposer).Proof,
+                CreateZeroRoundProof(_blockChain.Tip, proposer),
                 _blockChain.GetPendingEvidence());
 
             Assert.NotNull(block.LastCommit);
@@ -678,8 +676,7 @@ namespace Libplanet.Tests.Blockchain
             Block b2 = _blockChain.ProposeBlock(
                 proposer,
                 CreateBlockCommit(b1),
-                new LotMetadata(_blockChain.Tip.Index, 0, _blockChain.Tip.Proof)
-                    .Prove(proposer).Proof,
+                CreateZeroRoundProof(_blockChain.Tip, proposer),
                 _blockChain.GetPendingEvidence());
             Assert.Single(b2.Transactions);
             Assert.Contains(txsB[3], b2.Transactions);
@@ -815,8 +812,7 @@ namespace Libplanet.Tests.Blockchain
             var block = _blockChain.ProposeBlock(
                 proposer,
                 CreateBlockCommit(_blockChain.Tip),
-                new LotMetadata(_blockChain.Tip.Index, 0, _blockChain.Tip.Proof)
-                    .Prove(proposer).Proof,
+                CreateZeroRoundProof(_blockChain.Tip, proposer),
                 _blockChain.GetPendingEvidence());
 
             Assert.DoesNotContain(txWithInvalidNonce, block.Transactions);
