@@ -1361,7 +1361,7 @@ namespace Libplanet.Tests.Action
                 stateStore: fx.StateStore).ToArray();
 
             Assert.NotNull(blockA.Proof);
-            Proof proof = (Proof)blockA.Proof;
+            Proof proof = blockA.Proof;
             int[] randomSeeds = Enumerable
                 .Range(0, txA.Actions.Count)
                 .Select(offset => proof.Seed + offset)
